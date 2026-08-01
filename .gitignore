@@ -1,0 +1,12 @@
+# Raw government source files -- large, and fully reproducible via the
+# download steps in README.md + data_prep/clean_and_prepare.py
+data/raw/*.csv
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Secrets -- never commit connection strings/passwords
+.env
+!.env.example
