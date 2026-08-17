@@ -36,3 +36,24 @@ Before running it:
    as the group header band, to avoid redundant repetition down the
    table. If you'd rather see it as a literal column too, that's a
    quick change in Report Builder.
+
+## Deployment
+
+Deployed to a local Power BI Report Server (Developer edition — free,
+non-expiring, distinct from the 180-day Evaluation edition) for an
+actual end-to-end demo rather than a design-time-only file:
+
+- **Catalog database**: the server's own report-server database lives
+  on the local SQL Server Express instance (`SQLEXPRESS`) — separate
+  from `emissions-analytics`, which stays on Azure SQL as the report's
+  data source.
+- **Web portal**: `http://localhost/reports/browse/EmissionsAnalytics`
+- **Report path**: `/EmissionsAnalytics/TopEmittersP2Gap`
+- **Deployed via** `ReportingServicesTools` (PowerShell): `New-RsFolder`
+  to create the `/EmissionsAnalytics` folder, then `Write-RsCatalogItem`
+  to publish the `.rdl`.
+- **Credentials**: the data source is left set to prompt at run time
+  (its state in the `.rdl` itself). To run without a prompt, configure
+  stored credentials directly in the web portal under the report's
+  **Manage → Data Sources** — that's a one-time, per-environment step
+  done in the portal, not something to embed in the file or repo.
