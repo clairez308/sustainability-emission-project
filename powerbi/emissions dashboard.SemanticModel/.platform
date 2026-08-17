@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "emissions dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7628bf56-86b9-4253-ad53-c89600d24a49"
+  }
+}

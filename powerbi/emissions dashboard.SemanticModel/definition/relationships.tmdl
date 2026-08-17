@@ -1,0 +1,8 @@
+relationship AutoDetected_35ffb8e2-6369-4b05-8d54-db4885239c8d
+	fromColumn: vw_p2_gap_analysis.Province
+	toColumn: vw_province_summary.province
+
+relationship AutoDetected_2300f249-d9ff-45f8-ac02-c8fa30745ff6
+	fromColumn: vw_p2_gap_analysis.'NAICS Description'
+	toColumn: vw_sector_summary.naics_description
+

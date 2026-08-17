@@ -1,0 +1,386 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Facility Drill-down",
+  "name": "a07b37257b122a95c665",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "6b55d05fabdd99944570",
+    "sections": {
+      "6b55d05fabdd99944570": {
+        "visualContainers": {
+          "afc64e7f7b971ac10da0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "438a562a2e62ee3a2b1d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Facility Name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2590166cf6d5ab128a67",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Province"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "56987375974a6ed8fe2d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "NAICS Description"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "20d1d1b568478b7571f3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "vw_p2_gap_analysis"
+                            }
+                          },
+                          "Property": "Latest Year CO2e tonnes"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b872af7d7eaa615f45be",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Has P2 Plan"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b435923e659011ff2309",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "vw_p2_gap_analysis"
+                            }
+                          },
+                          "Property": "3 Year Emissions Trend PCT"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "vw_p2_gap_analysis"
+                            }
+                          },
+                          "Property": "Latest Year CO2e tonnes"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "f8a3ef8fa38be8097d40": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e722c2dae396e298bc24",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Province"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Province"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "ede9cfbe8ecc02150a77": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a0df10181c3089eeda79",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "emitter_tier"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "emitter_tier"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "dacd14fb04090c7d2a20": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3fe244c17ddc6af4f4e4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Has P2 Plan"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Has P2 Plan"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "89cdf921fc041920f0be": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "03574bfc063a0e95dd2f",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "NAICS Description"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "NAICS Description"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

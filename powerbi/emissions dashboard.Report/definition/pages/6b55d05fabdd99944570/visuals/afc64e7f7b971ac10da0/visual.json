@@ -1,0 +1,262 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "afc64e7f7b971ac10da0",
+  "position": {
+    "x": 230.9278350515464,
+    "y": 94.020618556701038,
+    "z": 0,
+    "height": 602.06185567010311,
+    "width": 1039.1752577319589,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_p2_gap_analysis"
+                    }
+                  },
+                  "Property": "Facility Name"
+                }
+              },
+              "queryRef": "vw_p2_gap_analysis.facility_name",
+              "nativeQueryRef": "Facility Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_p2_gap_analysis"
+                    }
+                  },
+                  "Property": "Province"
+                }
+              },
+              "queryRef": "vw_p2_gap_analysis.province",
+              "nativeQueryRef": "Province"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_p2_gap_analysis"
+                    }
+                  },
+                  "Property": "NAICS Description"
+                }
+              },
+              "queryRef": "vw_p2_gap_analysis.naics_description",
+              "nativeQueryRef": "NAICS Description"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "Latest Year CO2e tonnes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(vw_p2_gap_analysis.latest_year_co2e_tonnes)",
+              "nativeQueryRef": "Latest Year CO2e tonnes",
+              "displayName": "Latest Year CO2e tonnes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "vw_p2_gap_analysis"
+                    }
+                  },
+                  "Property": "Has P2 Plan"
+                }
+              },
+              "queryRef": "vw_p2_gap_analysis.has_p2_plan",
+              "nativeQueryRef": "Has P2 Plan"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "vw_p2_gap_analysis"
+                        }
+                      },
+                      "Property": "3 Year Emissions Trend PCT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(vw_p2_gap_analysis.three_year_emissions_trend_pct)",
+              "nativeQueryRef": "3 Year Emissions Trend PCT",
+              "displayName": "3 Year Emissions Trend PCT"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "vw_p2_gap_analysis"
+                  }
+                },
+                "Property": "Has P2 Plan"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "243.31301382381812D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "vw_p2_gap_analysis.facility_name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "245.7792002271354D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "vw_p2_gap_analysis.naics_description"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "154.51493134313301D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(vw_p2_gap_analysis.latest_year_co2e_tonnes)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "92.76289201981638D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "vw_p2_gap_analysis.province"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#86BC25'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Facility Drill-Down Table'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

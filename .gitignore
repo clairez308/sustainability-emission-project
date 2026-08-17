@@ -10,3 +10,7 @@ __pycache__/
 # Secrets -- never commit connection strings/passwords
 .env
 !.env.example
+
+# Power BI Project (.pbip) local editor state -- machine-specific, regenerated
+# by Desktop, and cache.abf may hold a local data cache of the semantic model
+**/.pbi/

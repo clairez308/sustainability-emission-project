@@ -1,0 +1,142 @@
+table vw_p2_gap_analysis
+	lineageTag: c84cd5cc-6309-44c1-abff-d33b69163395
+
+	measure 'Total CO2e (latest year)' = SUM(vw_p2_gap_analysis[Latest Year CO2e tonnes])
+		formatString: 0
+		lineageTag: f8dfdbbe-29e2-475f-879f-0c3ae0574dc7
+
+	measure 'Total Facilities' = COUNTROWS(vw_p2_gap_analysis)
+		formatString: 0
+		lineageTag: 14db23df-2cfa-4b11-b81b-9c07a5baf4b8
+
+	measure '% Top Emitters Without P2 Plan' = ```
+			
+			  DIVIDE(
+			      CALCULATE(COUNTROWS
+			  (vw_p2_gap_analysis),
+			          vw_p2_gap_analysis[emitter_tier] = "Top emitter (100kt+)",
+			          vw_p2_gap_analysis[Has P2 Plan] = 0),
+			      CALCULATE(COUNTROWS
+			  (vw_p2_gap_analysis),
+			          vw_p2_gap_analysis[emitter_tier] =
+			  "Top emitter (100kt+)")
+			  )
+			```
+		formatString: 0
+		lineageTag: 8e7594ac-4b39-468d-a030-e407e756c452
+
+	measure 'Avg 3yr Emissions Trend' = AVERAGE(vw_p2_gap_analysis[3 Year Emissions Trend PCT])
+		lineageTag: fb2b4f77-2e74-4f0f-9365-6f1eb0306c61
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column facility_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d229838a-ccf7-43ee-9a9f-fa40e692f850
+		summarizeBy: sum
+		sourceColumn: facility_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Facility Name'
+		dataType: string
+		lineageTag: 130f678f-2dd1-4029-a848-10892b66c286
+		summarizeBy: none
+		sourceColumn: Facility Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Province
+		dataType: string
+		lineageTag: 395602da-97ec-4e6a-9397-803f01dc623e
+		summarizeBy: none
+		sourceColumn: Province
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NAICS Description'
+		dataType: string
+		lineageTag: 3a628730-f46d-4e2e-972f-4c423a87e34d
+		summarizeBy: none
+		sourceColumn: NAICS Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column latest_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 4d9d7355-f22e-4aa3-8fa4-7c84c59bd53e
+		summarizeBy: sum
+		sourceColumn: latest_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Latest Year CO2e tonnes'
+		dataType: double
+		lineageTag: 410855ce-4504-4714-99e7-8c9f90af905c
+		summarizeBy: sum
+		sourceColumn: Latest Year CO2e tonnes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '3 Year Emissions Trend PCT'
+		dataType: double
+		lineageTag: 3b38f86b-4529-4a66-ba70-01537d38a8eb
+		summarizeBy: sum
+		sourceColumn: 3 Year Emissions Trend PCT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column trend_baseline_flag
+		dataType: string
+		lineageTag: 7008d087-fcbd-4d7a-af20-05ad36b54b4b
+		summarizeBy: none
+		sourceColumn: trend_baseline_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Has P2 Plan'
+		dataType: int64
+		formatString: 0
+		lineageTag: e5a5630a-3e03-4acc-b00f-502c444755f9
+		summarizeBy: sum
+		sourceColumn: Has P2 Plan
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column has_p2_activity
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 620b0918-c008-4b33-911d-13d36786d18e
+		summarizeBy: none
+		sourceColumn: has_p2_activity
+
+		annotation SummarizationSetBy = Automatic
+
+	column emitter_tier
+		dataType: string
+		lineageTag: 26b8d582-463d-455a-91f1-88f1bdd7a30a
+		summarizeBy: none
+		sourceColumn: emitter_tier
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_p2_gap_analysis = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("sql-emissions-claire.database.windows.net", "emissions-analytics"),
+				    dbo_vw_p2_gap_analysis = Source{[Schema="dbo",Item="vw_p2_gap_analysis"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(dbo_vw_p2_gap_analysis,{{"facility_name", "Facility Name"}, {"province", "Province"}, {"naics_description", "NAICS Description"}, {"latest_year_co2e_tonnes", "Latest Year CO2e tonnes"}, {"has_p2_plan", "Has P2 Plan"}, {"three_year_emissions_trend_pct", "3 Year Emissions Trend PCT"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+

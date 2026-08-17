@@ -1,0 +1,50 @@
+table vw_emissions_trend_by_gas
+	lineageTag: ed89aa7d-ffea-428e-8a06-e836d0c3bf6b
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3a3079c0-3243-4fc3-9b38-fb94937ee931
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column gas_type
+		dataType: string
+		lineageTag: 05ea3b3e-2111-4f68-a32f-a1f6675586ab
+		summarizeBy: none
+		sourceColumn: gas_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_co2e_tonnes
+		dataType: double
+		lineageTag: 00ea459f-d25f-4e6d-8f0b-778e02b05f97
+		summarizeBy: sum
+		sourceColumn: total_co2e_tonnes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reporting_facility_count
+		dataType: int64
+		formatString: 0
+		lineageTag: c2e4dc09-2f6d-42e8-ae03-23e0b3c62fd0
+		summarizeBy: sum
+		sourceColumn: reporting_facility_count
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_emissions_trend_by_gas = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("sql-emissions-claire.database.windows.net", "emissions-analytics"),
+				    dbo_vw_emissions_trend_by_gas = Source{[Schema="dbo",Item="vw_emissions_trend_by_gas"]}[Data]
+				in
+				    dbo_vw_emissions_trend_by_gas
+
+	annotation PBI_ResultType = Table
+
